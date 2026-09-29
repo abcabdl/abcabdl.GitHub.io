@@ -23,7 +23,7 @@ jobs:
           REPOSITORY: ${{ github.event.repository.name }}
         run: |
           echo "PUBLIC_SITE_URL=https://${OWNER}.github.io" >> "$GITHUB_ENV"
-          if [[ "$REPOSITORY" == "${OWNER}.github.io" ]]; then
+          if [[ "${REPOSITORY,,}" == "${OWNER,,}.github.io" ]]; then
             echo "PUBLIC_SITE_BASE=" >> "$GITHUB_ENV"
           else
             echo "PUBLIC_SITE_BASE=/${REPOSITORY}" >> "$GITHUB_ENV"
