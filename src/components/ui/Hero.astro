@@ -1,0 +1,28 @@
+---
+import { social, template } from '@/settings'
+
+const { fullName, title, institute } = Astro.props
+---
+
+<div class="grid w-full gap-10 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-center">
+  <div>
+    <p class="mb-4 text-sm font-semibold tracking-[0.2em] text-primary uppercase">Academic Homepage</p>
+    <h1 class="mb-4 text-5xl font-black tracking-tight md:text-6xl">{fullName}</h1>
+    <p class="mb-5 text-lg font-medium text-base-content/75">{title} · {institute}</p>
+    <p class="max-w-2xl text-base leading-7 text-base-content/75">
+      I currently conduct research at the <a href="https://apex.sjtu.edu.cn/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary hover:underline">Shanghai Jiao Tong University APEX Lab ↗</a>,
+      supervised by <a href="https://www.cs.sjtu.edu.cn/jiaoshiml/liuweiwen.html" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary hover:underline">Associate Professor Weiwen Liu ↗</a>.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href={`${template.base}/research`} class="btn btn-primary">Explore Research <span aria-hidden="true">↗</span></a>
+      <a href={`${template.base}/papers`} class="btn btn-outline">Publications</a>
+    </div>
+    {social.email && <p class="mt-6 text-sm text-base-content/70">Email: <a class="link link-primary" href={`mailto:${social.email}`}>{social.email}</a></p>}
+  </div>
+  <div class="relative mx-auto hidden h-64 w-64 lg:block" aria-hidden="true">
+    <div class="absolute inset-0 rounded-[2rem] bg-primary/10 rotate-6"></div>
+    <div class="absolute inset-0 flex items-center justify-center rounded-[2rem] border border-primary/20 bg-base-200 shadow-sm -rotate-3">
+      <span class="text-7xl font-black tracking-tighter text-primary">RZ</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+export const projects = [
+  {
+    id: 'smart',
+    title: 'Dynamic Multi-Agent Orchestration at Scale',
+    shortTitle: 'SMART',
+    period: 'Jan 2026 – May 2026',
+    role: 'Project lead · sole first author',
+    status: 'NeurIPS 2026 Oral',
+    tags: ['Multi-Agent Systems', 'Planning', 'Tree Search'],
+    summary: 'Form task-specific teams and assign roles from a large pool of specialized agents.',
+    details: [
+      'Designed task-adaptive collaboration topologies and role planning, combining candidate retrieval with LLM-free Monte Carlo tree search.',
+      'Enabled online team formation and role assignment from 300 specialized agents, achieving state-of-the-art results on code generation and mathematical reasoning benchmarks.',
+    ],
+  },
+  {
+    id: 'flowlm',
+    title: 'Few-Step Generation for Diffusion Language Models',
+    shortTitle: 'FlowLM',
+    period: 'Nov 2025 – Mar 2026',
+    role: 'Project lead · sole first author',
+    status: 'WAICA 2026',
+    tags: ['Diffusion Language Models', 'Flow Matching', 'Inference'],
+    summary: 'Applied flow matching to diffusion language models to reduce the number of sampling steps.',
+    details: [
+      'Developed a flow-matching training and sampling method for discrete text generation, reducing an approximately 2,000-step process to few-step generation.',
+      'Achieved over 100× faster sampling while maintaining the original model performance.',
+    ],
+  },
+  {
+    id: 'molecule',
+    title: 'Conditional Molecular Generation',
+    shortTitle: 'Molecular Generation',
+    period: 'Apr 2025 – Oct 2025',
+    role: 'Project member',
+    status: '3rd World AI for Science Competition',
+    tags: ['Molecular Generation', 'Diffusion', 'GRPO'],
+    summary: 'Improved diffusion-based molecular generation with reinforcement learning and conditional guidance.',
+    details: [
+      'Improved the model architecture, sampled chemical bonds directly, and refined generation through repeated noising and denoising.',
+      'Used GRPO fine-tuning and classifier-free guidance for conditional generation; reduced loss by 25% on a public dataset.',
+      'Placed 1st in the preliminary round and 2nd in the second round of the 3rd World AI for Science Competition.',
+    ],
+  },
+]

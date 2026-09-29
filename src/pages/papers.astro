@@ -1,0 +1,25 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { publications } from '@/data/cv'
+---
+
+<Layout title="Publications | Runzhe Zhang" description="Research publications by Runzhe Zhang.">
+  <header class="mb-11 border-b border-base-300 pb-9">
+    <p class="mb-3 text-xs font-bold tracking-[0.18em] text-primary uppercase">Publications</p>
+    <h1 class="mb-4 text-4xl font-black">Publications</h1>
+  </header>
+  <div class="space-y-6">
+    {publications.map(paper => (
+      <article class="rounded-2xl border border-base-300 p-7 shadow-sm">
+        <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <span class="badge badge-primary badge-outline">{paper.journal}</span>
+          <span class="text-sm text-base-content/50">{paper.time}</span>
+        </div>
+        <h2 class="mb-3 text-xl font-bold leading-snug">{paper.title}</h2>
+        <p class="mb-4 text-sm leading-6 text-base-content/70">{paper.authors}</p>
+        <p class="leading-7 text-base-content/80">{paper.abstract}</p>
+        {paper.link && <a href={paper.link} target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline mt-5">Read Paper ↗</a>}
+      </article>
+    ))}
+  </div>
+</Layout>

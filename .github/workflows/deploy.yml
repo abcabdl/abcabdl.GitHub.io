@@ -1,0 +1,45 @@
+name: Deploy academic homepage
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Set GitHub Pages URL
+        shell: bash
+        env:
+          OWNER: ${{ github.repository_owner }}
+          REPOSITORY: ${{ github.event.repository.name }}
+        run: |
+          echo "PUBLIC_SITE_URL=https://${OWNER}.github.io" >> "$GITHUB_ENV"
+          if [[ "$REPOSITORY" == "${OWNER}.github.io" ]]; then
+            echo "PUBLIC_SITE_BASE=" >> "$GITHUB_ENV"
+          else
+            echo "PUBLIC_SITE_BASE=/${REPOSITORY}" >> "$GITHUB_ENV"
+          fi
+      - name: Install, build and upload
+        uses: withastro/action@v6
+        with:
+          node-version: 26.3.0
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

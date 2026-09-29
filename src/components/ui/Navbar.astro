@@ -1,0 +1,31 @@
+---
+import { profile, template, social } from '@/settings'
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/research', label: 'Research' },
+  { href: '/papers', label: 'Publications' },
+]
+---
+
+<aside class="flex h-screen w-64 flex-col border-r border-base-300 bg-base-200/60 px-6 py-9 text-base-content">
+  <a href={`${template.base}/`} class="flex items-center gap-3" aria-label="Return to homepage">
+    <span class="flex size-12 items-center justify-center rounded-2xl bg-primary text-lg font-black text-primary-content">RZ</span>
+    <span class="leading-tight">
+      <strong class="block text-lg">{profile.fullName}</strong>
+      <small class="text-xs text-base-content/60">Research & Projects</small>
+    </span>
+  </a>
+  <p class="mt-8 border-t border-base-300 pt-7 text-xs font-semibold tracking-[0.16em] text-base-content/45">EXPLORE</p>
+  <nav aria-label="Main navigation" class="mt-4 flex flex-col gap-1">
+    {links.map(link => (
+      <a href={`${template.base}${link.href}`} class="rounded-xl px-4 py-3 font-medium text-base-content/70 transition hover:bg-primary/10 hover:text-primary">
+        {link.label}
+      </a>
+    ))}
+  </nav>
+  <div class="mt-auto border-t border-base-300 pt-6">
+    <p class="text-xs leading-5 text-base-content/60">SJTU Global College<br />2024 cohort · Electrical and Computer Engineering</p>
+    {social.email && <a href={`mailto:${social.email}`} class="mt-4 block break-all text-xs text-primary hover:underline">{social.email}</a>}
+  </div>
+</aside>
